@@ -21,7 +21,11 @@ def get_data():
     shops = json.loads(JSON[0])
     good_data = []
     for item in shops:
-        item['x'], item['y'] = item.pop('COORDINATE').split(',')
+        item['y'], item['x'] = item.pop('COORDINATE').split(',')
+
+        item['y'] = float(item.pop('y'))
+        item['x'] = float(item.pop('x'))
+
         item['work_time'] = item.get('STARTED_WORK') + '-' + item.get('END_WORK')
         del item['STARTED_WORK']
         del item['END_WORK']
@@ -31,8 +35,8 @@ def get_data():
 
 
 def pd_data():
-    good_data=get_data()
+    good_data = get_data()
     df = pd.DataFrame(good_data)
-    df['brand_name']='Мария-Ра'
-    df['holding_name']='Мария-Ра'
+    df['brand_name'] = 'Мария-Ра'
+    df['holding_name'] = 'Мария-Ра'
     return df

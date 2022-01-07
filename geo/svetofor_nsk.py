@@ -13,8 +13,8 @@ def get_data():
             f'var latlng{_id}= \[(.*?)];', response.text)[0]
         lat, lon = latlng.split(',')
         item = {
-            'x': lon.strip(),
-            'y': lat.strip(),
+            'y': float(lon.strip()),
+            'x': float(lat.strip()),
         }
         address = re.findall(
             f'marker{_id}.properties.set\("zhymTitle", "(.*?)"\);',

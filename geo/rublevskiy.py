@@ -10,8 +10,8 @@ def get_data():
         item['id'] = shop.get('id')
         item['address'] = shop.get('address')
         item['store_time'] = shop.get('store_time')
-        item['x'] = shop.get('lat')
-        item['y'] = shop.get('lng')
+        item['y'] = float(shop.get('lat'))
+        item['x'] = float(shop.get('lng'))
         good_data.append(item)
     return good_data
 
@@ -21,5 +21,3 @@ def pd_data():
     df['brand_name'] = 'Рублёвский'
     df['holding_name'] = 'Рублёвский'
     return df
-
-

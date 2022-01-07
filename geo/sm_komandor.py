@@ -13,8 +13,8 @@ def get_data():
     good_data = []
     for shop in shops:
         shop['name'] = shop.pop('TITLE')
-        shop['x'] = shop.pop('GPS_N')
-        shop['y'] = shop.pop('GPS_S')
+        shop['y'] = float(shop.pop('GPS_N'))
+        shop['x'] = float(shop.pop('GPS_S'))
 
         post_code, address = shop.get('ADDRESS').split(',', 1)
         shop['post_code'] = post_code

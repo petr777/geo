@@ -13,15 +13,23 @@ def get_data():
         item['address'] = block.xpath('.//span[contains(@class, "js-address")]/text()').get()
         item['work_time'] = block.xpath('.//div[@class="js-slide-body"]//span[2]/text()').get()
         item['phone'] = block.xpath('.//div[@class="js-slide-body"]//span[4]/text()').get()
-        item['x'] = block.xpath('.//div[@data-icon="map"]/@data-lat').get()
-        item['y'] = block.xpath('.//div[@data-icon="map"]/@data-lng').get()
+
+        lat = block.xpath('.//div[@data-icon="map"]/@data-lat').get()
+        if lat:
+            item['y'] = float(lat)
+
+        lon = block.xpath('.//div[@data-icon="map"]/@data-lng').get()
+        if lon:
+            item['x'] = float(lon)
+
         data.append(item)
     return data
 
 def pd_data():
-    good_data=get_data()
+    good_data = get_data()
     df = pd.DataFrame(good_data)
-    df['brand_name'] ='Araz'
-    df['holding_name']='Veyseloglu'
+    df['brand_name'] = 'Araz'
+    df['holding_name'] = 'Veyseloglu'
     return df
+
 

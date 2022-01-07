@@ -14,8 +14,8 @@ def get_data():
     good_data = []
     for shop in JSON:
         item = {}
-        item['y'] = shop[0]
-        item['x'] = shop[1]
+        item['x'] = float(shop[0])
+        item['y'] = float(shop[1])
         item['name'] = shop[2]
         item['address'] = shop[3]
         good_data.append(item)
@@ -28,4 +28,5 @@ def pd_data():
     df['brand_name']='OBA Market'
     df['holding_name']='Veysəloğlu'
     return df
+
 

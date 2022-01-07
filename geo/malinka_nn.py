@@ -22,7 +22,8 @@ def get_data():
         item = {}
         item['_id'] = row[5][3][0][1][0]
         coords = row[1][0][0]
-        item['x'], item['y'] = coords[0], coords[1]
+        item['y'], item['x'] = float(coords[0]), float(coords[1])
+
         item['address'] = row[5][3][1][1][0]
         if row[5][3][-1][0] == 'Вермя работы':
             item['work_time'] = row[5][3][-1][1][0]
@@ -36,3 +37,4 @@ def pd_data():
     df['brand_name'] = 'Малинка'
     df['holding_name'] = 'Сладкая жизнь'
     return df
+

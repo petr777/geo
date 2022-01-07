@@ -21,8 +21,8 @@ def get_data():
         item = {}
         item['_id'] = point.get('id')
         coords = point.get('coords')
-        item['x'] = coords[0]
-        item['y'] = coords[1]
+        item['y'] = float(coords[0])
+        item['x'] = float(coords[1])
         item['region'] = point.get('region')
         item['city'] = point.get('city')
         item['address'] = html_text.extract_text(
@@ -42,4 +42,6 @@ def pd_data():
     df['brand_name'] = 'Продукты Ермолино'
     df['holding_name'] = 'ТМ "ЕРМОЛИНО"'
     return df
+
+
 
