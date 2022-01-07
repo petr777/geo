@@ -22,7 +22,8 @@ def get_data():
         item = {}
         item['name'] = row[5][0][1][0]
         coords = row[1][0][0]
-        item['x'], item['y'] = coords[0], coords[1]
+        item['y'], item['x'] = float(coords[0]), float(coords[1])
+
         fragment = row[5][1][1][0].split('+')
         address = html_text.extract_text(fragment[0])
         if address[-1] == 'n':
@@ -34,9 +35,8 @@ def get_data():
 
 
 def pd_data():
-    good_data=get_data()
+    good_data = get_data()
     df = pd.DataFrame(good_data)
-    df['brand_name']='Neptun'
-    df['holding_name']='Neptun'
+    df['brand_name'] = 'Neptun'
+    df['holding_name'] = 'Neptun'
     return df
-

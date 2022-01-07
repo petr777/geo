@@ -37,8 +37,8 @@ def get_data():
         latlon = re.findall(f'points\[{_id}] = new YMaps.GeoPoint\((.*?)\);', response.text)
         if latlon:
             lat, lon = latlon[0].split(',')
-            item['y'] = lat
-            item['x'] = lon
+            item['x'] = float(lat)
+            item['y'] = float(lon)
 
         item['address'] = re.findall(
             f'pmark\[{_id}].name = (.*?);', response.text
@@ -59,4 +59,5 @@ def pd_data():
     df['brand_name'] = 'Красный Яр'
     df['holding_name'] = 'Красный Яр'
     return df
+
 

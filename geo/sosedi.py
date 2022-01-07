@@ -19,8 +19,8 @@ def get_data():
             item['work_time'] = shop.get('timeWork').get('start') + '-' + shop.get('timeWork').get('end')
         elif shop.get('timeWork'):
             item['work_time'] = '24/7'
-        item['y'] = shop.get('coordinates', {}).get('lat')
-        item['x'] = shop.get('coordinates', {}).get('lng')
+        item['x'] = float(shop.get('coordinates', {}).get('lat'))
+        item['y'] = float(shop.get('coordinates', {}).get('lng'))
         good_data.append(item)
     return good_data
 
@@ -31,5 +31,6 @@ def pd_data():
     df['brand_name'] ='Соседи'
     df['holding_name']='Соседи'
     return df
+
 
 

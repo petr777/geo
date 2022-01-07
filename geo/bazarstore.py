@@ -25,7 +25,7 @@ def get_data():
         item = {}
         item['name'] = row[5][0][1][0]
         coords = row[1][0][0]
-        item['x'], item['y'] = coords[0], coords[1]
+        item['y'], item['x'] = float(coords[0]), float(coords[1])
         fragment = row[5][1][1][0].split('www.bazarstore.azn')
         item['address'] = html_text.extract_text(fragment[0])
         item['phone'] = html_text.extract_text(fragment[1]).replace('n*1900n', '')

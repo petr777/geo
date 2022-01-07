@@ -20,15 +20,21 @@ def get_data():
         item['type'] = shop['type_x']
         item['address'] = shop['city']
         item['phone'] = shop['phone']
-        item['x'], item['y'] = shop['geometry']['coordinates']
+
+        item['y'], item['x'] = shop['geometry']['coordinates']
+        item['y'] = float(item.pop('y'))
+        item['x'] = float(item.pop('x'))
+
         item['work_time'] = shop['time']
         good_data.append(item)
     return good_data
 
 
 def pd_data():
-    good_data=get_data()
+    good_data = get_data()
     df = pd.DataFrame(good_data)
-    df['brand_name'] ='Евроопт'
-    df['holding_name']='Евроторг'
+    df['brand_name'] = 'Евроопт'
+    df['holding_name'] = 'Евроторг'
     return df
+
+

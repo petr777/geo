@@ -17,8 +17,8 @@ def get_data():
         item['type'] = store.get('filialType')
         item['city'] = store.get('city', {}).get('title')
         item['work_time'] = store.get('workingHours', {}).get('start') + '-' + store.get('workingHours', {}).get('end')
-        item['y'] = store.get('location', {}).get('lng')
-        item['x'] = store.get('location', {}).get('lat')
+        item['x'] = float(store.get('location', {}).get('lng'))
+        item['y'] = float(store.get('location', {}).get('lat'))
         good_data.append(item)
 
     return good_data
@@ -29,3 +29,4 @@ def pd_data():
     df['brand_name'] ='Сільпо'
     df['holding_name']='Fozzy Group'
     return df
+

@@ -14,8 +14,8 @@ def get_data():
     data = []
     while i != len(lats):
         item = {
-            'x': lats[i].strip(),
-            'y': lons[i].strip(),
+            'y': float(lats[i].strip()),
+            'x': float(lons[i].strip()),
             'name': names[i],
             'address': address[i]
         }
@@ -24,9 +24,8 @@ def get_data():
     return data
 
 def pd_data():
-    good_data=get_data()
+    good_data = get_data()
     df = pd.DataFrame(good_data)
-    df['brand_name'] ='АЛМИ'
-    df['holding_name']='FMCG'
+    df['brand_name'] = 'АЛМИ'
+    df['holding_name'] = 'FMCG'
     return df
-
