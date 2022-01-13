@@ -15,8 +15,8 @@ def get_shop_in_city(id_city, name_city):
         latlon = re.findall('myMap.setCenter\((.*?)\)', shop.xpath('./@onclick').get())[0]
         latlon = ast.literal_eval(latlon)
         lat, lon = latlon
-        item['x'] = float(lat)
-        item['y'] = float(lon)
+        item['x'] = float(lon)
+        item['y'] = float(lat)
         item['address'] = shop.xpath('.//span[@class="street"]/text()').extract_first()
         item['city'] = name_city
         item['phone'] = shop.xpath('.//span[@class="phone"]/text()').extract_first()

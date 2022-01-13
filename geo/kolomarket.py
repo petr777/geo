@@ -16,11 +16,12 @@ def get_data():
         for shop in row['cityShopsList']:
             item = dict()
             item['address'] = shop[0]
-            item['lat'] = float(shop[1])
-            item['lon'] = float(shop[2])
+            item['y'] = float(shop[1])
+            item['x'] = float(shop[2])
             item['work_time'] = f'{shop[3]} - {shop[4]}'
             good_data.append(item)
     return good_data
+
 
 def pd_data():
     good_data = get_data()
