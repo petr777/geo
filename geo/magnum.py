@@ -30,8 +30,8 @@ def get_data():
             item['city'] = city_name
             item['store_id'] = li.xpath('./@id').extract_first()
             lonlat = ast.literal_eval(li.xpath('./@data-cords').extract_first())
-            item['y'] = lonlat[0]
-            item['x'] = lonlat[1]
+            item['y'] = float(lonlat[0])
+            item['x'] = float(lonlat[1])
             item['phone'] = li.xpath('./@data-phone').extract_first()
             item['work_time'] = li.xpath('./@data-mod').extract_first()
             text = extract_text(li.get())
