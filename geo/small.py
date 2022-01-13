@@ -38,8 +38,8 @@ def get_data():
             item['shop_type'] = shop_type.get(shop['shop_type'])
             item['address'] = shop['address']
             item['work_time'] = shop['working_hours']
-            item['y'] = shop['latitude']
-            item['x'] = shop['longitude']
+            item['y'] = float(shop['latitude'])
+            item['x'] = float(shop['longitude'])
             good_data.append(item)
     return good_data
 
