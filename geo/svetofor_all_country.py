@@ -44,8 +44,8 @@ class BlogSpider(scrapy.Spider):
 
             if 'Координаты:' in li.get():
                 lonalt = li.xpath('./strong/text()').get()
-                item['y'], item['x'] = re.findall("\d+\.\d+", lonalt)
-
+                y, x = re.findall("\d+\.\d+", lonalt)
+                item['y'], item['x'] = float(y), float(x)
             if 'Время работы:' in li.get():
                 item['work_time'] = li.xpath('./strong/text()').get()
 
