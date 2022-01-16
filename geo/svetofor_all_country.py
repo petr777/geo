@@ -4,7 +4,7 @@ import re
 import pandas as pd
 
 
-svetofor_all_country_result = []
+RESULT_DATA_SPIDER = []
 
 class SvetoforAllCountrySpider(scrapy.Spider):
     name = 'Svetoformagazin'
@@ -23,7 +23,6 @@ class SvetoforAllCountrySpider(scrapy.Spider):
         'https://svetoformagazin.com/kz/',
         'https://svetoformagazin.com/ua/'
     ]
-    good_data = []
 
     def parse(self, response):
         url_shop = response.xpath('//table[@class="table table-bordered"]//tr/td/a/@href').getall()
@@ -52,13 +51,13 @@ class SvetoforAllCountrySpider(scrapy.Spider):
             if 'Телефон:' in li.get():
                 item['phone'] = li.xpath('./strong/text()').get()
 
-        svetofor_all_country_result.append(item)
+        RESULT_DATA_SPIDER.append(item)
 
 def pd_data():
     process = CrawlerProcess()
     process.crawl(SvetoforAllCountrySpider)
     process.start()
-    df = pd.DataFrame(svetofor_all_country_result)
+    df = pd.DataFrame(RESULT_DATA_SPIDER)
     df['brand_name'] = 'Светофор'
     df['holding_name'] = 'Светофор Групп'
     return df
