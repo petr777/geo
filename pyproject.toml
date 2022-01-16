@@ -13,6 +13,10 @@ Scrapy = "^2.5.1"
 html-text = "^0.5.2"
 Faker = "^11.3.0"
 aiohttp = "^3.8.1"
+dadata = "^21.10.1"
+playwright = "^1.17.2"
+natasha = "^1.4.0"
+geocoder = "^1.38.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

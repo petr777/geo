@@ -28,6 +28,6 @@ def get_data():
 def pd_data():
     good_data = get_data()
     df = pd.DataFrame(good_data)
-    df['brand_name'] = 'Колизей'
-    df['holding_name'] = 'Колизей'
+    df['brand_name'] = 'Купец'
+    df['holding_name'] = 'Купец̆'
     return df
