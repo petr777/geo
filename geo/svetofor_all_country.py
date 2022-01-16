@@ -6,8 +6,8 @@ import pandas as pd
 
 svetofor_all_country_result = []
 
-class BlogSpider(scrapy.Spider):
-    name = 'blogspider'
+class SvetoforAllCountrySpider(scrapy.Spider):
+    name = 'Svetoformagazin'
     custom_settings = {
         'CONCURRENT_REQUESTS': 32,
         'USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 YaBrowser/19.12.0.769 Yowser/2.5 Safari/537.36',
@@ -56,9 +56,10 @@ class BlogSpider(scrapy.Spider):
 
 def pd_data():
     process = CrawlerProcess()
-    process.crawl(BlogSpider)
+    process.crawl(SvetoforAllCountrySpider)
     process.start()
     df = pd.DataFrame(svetofor_all_country_result)
     df['brand_name'] = 'Светофор'
     df['holding_name'] = 'Светофор Групп'
     return df
+
