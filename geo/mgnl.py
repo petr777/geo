@@ -25,11 +25,3 @@ def pd_data():
     df['brand_name'] = 'Магнолия'
     df['holding_name'] = 'Магнолия'
     return df
-
-
-from pandas import ExcelWriter
-
-df = pd_data()
-writer = ExcelWriter(f'test1.xlsx')
-df.to_excel(writer, 'Sheet1')
-writer.save()
